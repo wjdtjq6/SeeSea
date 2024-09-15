@@ -11,6 +11,8 @@
 		BFED10902C9426A700A9DFBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED108F2C9426A700A9DFBF /* ContentView.swift */; };
 		BFED10922C9426A800A9DFBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFED10912C9426A800A9DFBF /* Assets.xcassets */; };
 		BFED10952C9426A800A9DFBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFED10942C9426A800A9DFBF /* Preview Assets.xcassets */; };
+		BFED109C2C97265500A9DFBF /* WebCamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED109B2C97265500A9DFBF /* WebCamView.swift */; };
+		BFED109E2C9726A500A9DFBF /* WaveForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		BFED108F2C9426A700A9DFBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFED10912C9426A800A9DFBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFED10942C9426A800A9DFBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BFED109B2C97265500A9DFBF /* WebCamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCamView.swift; sourceTree = "<group>"; };
+		BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveForecastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				BFED108F2C9426A700A9DFBF /* ContentView.swift */,
 				BFED10912C9426A800A9DFBF /* Assets.xcassets */,
 				BFED10932C9426A800A9DFBF /* Preview Content */,
+				BFED109B2C97265500A9DFBF /* WebCamView.swift */,
+				BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */,
 			);
 			path = SeeSea;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			files = (
 				BFED10902C9426A700A9DFBF /* ContentView.swift in Sources */,
 				BFED108E2C9426A700A9DFBF /* SeeSeaApp.swift in Sources */,
+				BFED109E2C9726A500A9DFBF /* WaveForecastView.swift in Sources */,
+				BFED109C2C97265500A9DFBF /* WebCamView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
