@@ -1,0 +1,15 @@
+{
+  "originHash" : "b0b2c637aa363157c57fbcb63c4de04e62d204930f564e10a5f9192184a248c9",
+  "pins" : [
+    {
+      "identity" : "navermapsdkforspm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/J0onYEong/NaverMapSDKForSPM.git",
+      "state" : {
+        "revision" : "d644944b2ba8fdef2f0b51cdf1c136ae63012907",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

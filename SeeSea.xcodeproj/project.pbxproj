@@ -13,6 +13,11 @@
 		BFED10952C9426A800A9DFBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFED10942C9426A800A9DFBF /* Preview Assets.xcassets */; };
 		BFED109C2C97265500A9DFBF /* WebCamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED109B2C97265500A9DFBF /* WebCamView.swift */; };
 		BFED109E2C9726A500A9DFBF /* WaveForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */; };
+		BFED10A22C9808DA00A9DFBF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BFED10A12C9808DA00A9DFBF /* .gitignore */; };
+		BFED10A42C9808F400A9DFBF /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10A32C9808F400A9DFBF /* APIKey.swift */; };
+		BFED10A72C980C2F00A9DFBF /* Junios.NMapSDKForSPM in Frameworks */ = {isa = PBXBuildFile; productRef = BFED10A62C980C2F00A9DFBF /* Junios.NMapSDKForSPM */; };
+		BFED10AA2C98232A00A9DFBF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10A92C98232A00A9DFBF /* MapView.swift */; };
+		BFED10AC2C98240800A9DFBF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10AB2C98240700A9DFBF /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +28,11 @@
 		BFED10942C9426A800A9DFBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BFED109B2C97265500A9DFBF /* WebCamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCamView.swift; sourceTree = "<group>"; };
 		BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveForecastView.swift; sourceTree = "<group>"; };
+		BFED10A12C9808DA00A9DFBF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		BFED10A32C9808F400A9DFBF /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		BFED10A82C9810FE00A9DFBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BFED10A92C98232A00A9DFBF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BFED10AB2C98240700A9DFBF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFED10A72C980C2F00A9DFBF /* Junios.NMapSDKForSPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,12 +66,17 @@
 		BFED108C2C9426A700A9DFBF /* SeeSea */ = {
 			isa = PBXGroup;
 			children = (
+				BFED10A82C9810FE00A9DFBF /* Info.plist */,
 				BFED108D2C9426A700A9DFBF /* SeeSeaApp.swift */,
 				BFED108F2C9426A700A9DFBF /* ContentView.swift */,
 				BFED10912C9426A800A9DFBF /* Assets.xcassets */,
 				BFED10932C9426A800A9DFBF /* Preview Content */,
 				BFED109B2C97265500A9DFBF /* WebCamView.swift */,
 				BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */,
+				BFED10A12C9808DA00A9DFBF /* .gitignore */,
+				BFED10A32C9808F400A9DFBF /* APIKey.swift */,
+				BFED10A92C98232A00A9DFBF /* MapView.swift */,
+				BFED10AB2C98240700A9DFBF /* Coordinator.swift */,
 			);
 			path = SeeSea;
 			sourceTree = "<group>";
@@ -89,6 +105,9 @@
 			dependencies = (
 			);
 			name = SeeSea;
+			packageProductDependencies = (
+				BFED10A62C980C2F00A9DFBF /* Junios.NMapSDKForSPM */,
+			);
 			productName = SeeSea;
 			productReference = BFED108A2C9426A700A9DFBF /* SeeSea.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +136,9 @@
 				Base,
 			);
 			mainGroup = BFED10812C9426A700A9DFBF;
+			packageReferences = (
+				BFED10A52C980C2F00A9DFBF /* XCRemoteSwiftPackageReference "NaverMapSDKForSPM" */,
+			);
 			productRefGroup = BFED108B2C9426A700A9DFBF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -132,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFED10952C9426A800A9DFBF /* Preview Assets.xcassets in Resources */,
+				BFED10A22C9808DA00A9DFBF /* .gitignore in Resources */,
 				BFED10922C9426A800A9DFBF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,9 +167,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFED10902C9426A700A9DFBF /* ContentView.swift in Sources */,
+				BFED10AA2C98232A00A9DFBF /* MapView.swift in Sources */,
 				BFED108E2C9426A700A9DFBF /* SeeSeaApp.swift in Sources */,
 				BFED109E2C9726A500A9DFBF /* WaveForecastView.swift in Sources */,
 				BFED109C2C97265500A9DFBF /* WebCamView.swift in Sources */,
+				BFED10A42C9808F400A9DFBF /* APIKey.swift in Sources */,
+				BFED10AC2C98240800A9DFBF /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +216,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -205,7 +231,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -253,7 +279,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -262,7 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -283,6 +309,9 @@
 				DEVELOPMENT_TEAM = N727744RT8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SeeSea/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = true;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = true;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -312,6 +341,9 @@
 				DEVELOPMENT_TEAM = N727744RT8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SeeSea/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = true;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = true;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -352,6 +384,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BFED10A52C980C2F00A9DFBF /* XCRemoteSwiftPackageReference "NaverMapSDKForSPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/J0onYEong/NaverMapSDKForSPM.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BFED10A62C980C2F00A9DFBF /* Junios.NMapSDKForSPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFED10A52C980C2F00A9DFBF /* XCRemoteSwiftPackageReference "NaverMapSDKForSPM" */;
+			productName = Junios.NMapSDKForSPM;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFED10822C9426A700A9DFBF /* Project object */;
 }
