@@ -18,6 +18,8 @@
 		BFED10A72C980C2F00A9DFBF /* Junios.NMapSDKForSPM in Frameworks */ = {isa = PBXBuildFile; productRef = BFED10A62C980C2F00A9DFBF /* Junios.NMapSDKForSPM */; };
 		BFED10AA2C98232A00A9DFBF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10A92C98232A00A9DFBF /* MapView.swift */; };
 		BFED10AC2C98240800A9DFBF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10AB2C98240700A9DFBF /* Coordinator.swift */; };
+		BFED10AF2C9A9E6D00A9DFBF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */; };
+		BFED10B12C9AADF500A9DFBF /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10B02C9AADF500A9DFBF /* Locations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		BFED10A92C98232A00A9DFBF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BFED10AB2C98240700A9DFBF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BFED10AD2C99979C00A9DFBF /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		BFED10B02C9AADF500A9DFBF /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 				BFED10A92C98232A00A9DFBF /* MapView.swift */,
 				BFED10AB2C98240700A9DFBF /* Coordinator.swift */,
 				BFED10AD2C99979C00A9DFBF /* Config.xcconfig */,
+				BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */,
+				BFED10B02C9AADF500A9DFBF /* Locations.swift */,
 			);
 			path = SeeSea;
 			sourceTree = "<group>";
@@ -157,6 +163,7 @@
 			files = (
 				BFED10952C9426A800A9DFBF /* Preview Assets.xcassets in Resources */,
 				BFED10A22C9808DA00A9DFBF /* .gitignore in Resources */,
+				BFED10AF2C9A9E6D00A9DFBF /* Launch Screen.storyboard in Resources */,
 				BFED10922C9426A800A9DFBF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +181,7 @@
 				BFED109E2C9726A500A9DFBF /* WaveForecastView.swift in Sources */,
 				BFED109C2C97265500A9DFBF /* WebCamView.swift in Sources */,
 				BFED10A42C9808F400A9DFBF /* APIKey.swift in Sources */,
+				BFED10B12C9AADF500A9DFBF /* Locations.swift in Sources */,
 				BFED10AC2C98240800A9DFBF /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,13 +320,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeeSea/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = true;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"\"해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.\"";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = true;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,13 +354,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeeSea/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = true;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"\"해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.\"";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = true;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

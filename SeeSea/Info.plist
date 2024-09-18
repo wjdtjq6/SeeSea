@@ -4,9 +4,5 @@
 <dict>
 	<key>NMFClientId</key>
 	<string>144ron9zoo</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>&quot;&quot;해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.&quot;</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.&quot;</string>
 </dict>
 </plist>
