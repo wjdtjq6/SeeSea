@@ -33,6 +33,7 @@
 		BFED10A82C9810FE00A9DFBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BFED10A92C98232A00A9DFBF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BFED10AB2C98240700A9DFBF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		BFED10AD2C99979C00A9DFBF /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +78,7 @@
 				BFED10A32C9808F400A9DFBF /* APIKey.swift */,
 				BFED10A92C98232A00A9DFBF /* MapView.swift */,
 				BFED10AB2C98240700A9DFBF /* Coordinator.swift */,
+				BFED10AD2C99979C00A9DFBF /* Config.xcconfig */,
 			);
 			path = SeeSea;
 			sourceTree = "<group>";

@@ -30,19 +30,20 @@ class Coordinator: NSObject, ObservableObject,
         super.init()
         
         view.mapView.positionMode = .direction
-            view.mapView.isNightModeEnabled = true
-            
-            view.mapView.zoomLevel = 15 // 기본 맵이 표시될때 줌 레벨
-            view.mapView.minZoomLevel = 1 // 최소 줌 레벨
-            view.mapView.maxZoomLevel = 17 // 최대 줌 레벨
-            
-            view.showLocationButton = true // 현위치 버튼: 위치 추적 모드를 표현합니다. 탭하면 모드가 변경됩니다.
-            view.showZoomControls = true // 줌 버튼: 탭하면 지도의 줌 레벨을 1씩 증가 또는 감소합니다.
-            view.showCompass = true //  나침반 : 카메라의 회전 및 틸트 상태를 표현합니다. 탭하면 카메라의 헤딩과 틸트가 0으로 초기화됩니다. 헤딩과 틸트가 0이 되면 자동으로 사라집니다
-            view.showScaleBar = true // 스케일 바 : 지도의 축척을 표현합니다. 지도를 조작하는 기능은 없습니다.
-            
-            view.mapView.addCameraDelegate(delegate: self)
-            view.mapView.touchDelegate = self
+        view.mapView.isNightModeEnabled = true
+        
+        view.mapView.zoomLevel = 15 // 기본 맵이 표시될때 줌 레벨
+        view.mapView.minZoomLevel = 1 // 최소 줌 레벨
+        view.mapView.maxZoomLevel = 17 // 최대 줌 레벨
+        
+        view.showLocationButton = true // 현위치 버튼: 위치 추적 모드를 표현합니다. 탭하면 모드가 변경됩니다.
+        view.showZoomControls = true // 줌 버튼: 탭하면 지도의 줌 레벨을 1씩 증가 또는 감소합니다.
+        view.showCompass = true //  나침반 : 카메라의 회전 및 틸트 상태를 표현합니다. 탭하면 카메라의 헤딩과 틸트가 0으로 초기화됩니다. 헤딩과 틸트가 0이 되면 자동으로 사라집니다
+        view.showScaleBar = true // 스케일 바 : 지도의 축척을 표현합니다. 지도를 조작하는 기능은 없습니다.
+        
+        view.mapView.addCameraDelegate(delegate: self)
+        view.mapView.touchDelegate = self
+        
             
     }
     func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
@@ -100,47 +101,47 @@ class Coordinator: NSObject, ObservableObject,
             }
         }
         
-        // MARK: - NMFMapView에서 제공하는 locationOverlay를 현재 위치로 설정
-        func fetchUserLocation() {
-            if let locationManager = locationManager {
-                let lat = locationManager.location?.coordinate.latitude
-                let lng = locationManager.location?.coordinate.longitude
-                let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 15)
-                cameraUpdate.animation = .easeIn
-                cameraUpdate.animationDuration = 1
-                
-                let locationOverlay = view.mapView.locationOverlay
-                locationOverlay.location = NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0)
-                locationOverlay.hidden = false
-                
-                locationOverlay.icon = NMFOverlayImage(name: "location_overlay_icon")
-                locationOverlay.iconWidth = CGFloat(NMF_LOCATION_OVERLAY_SIZE_AUTO)
-                locationOverlay.iconHeight = CGFloat(NMF_LOCATION_OVERLAY_SIZE_AUTO)
-                locationOverlay.anchor = CGPoint(x: 0.5, y: 1)
-                
-                view.mapView.moveCamera(cameraUpdate)
-            }
-        }
-    func getNaverMapView() -> NMFNaverMapView {
-            view
-        }
-        
-        // 마커 부분의 lat lng를 init 부분에 호출해서 사용하면 바로 사용가능하지만
-        // 파이어베이스 연동의 문제를 생각해서 받아오도록 만들었습니다.
-
-        func setMarker(lat : Double, lng:Double) {
-            let marker = NMFMarker()
-            marker.iconImage = NMF_MARKER_IMAGE_PINK
-            marker.position = NMGLatLng(lat: lat, lng: lng)
-            marker.mapView = view.mapView
+    // MARK: - NMFMapView에서 제공하는 locationOverlay를 현재 위치로 설정
+    func fetchUserLocation() {
+        if let locationManager = locationManager {
+            let lat = locationManager.location?.coordinate.latitude
+            let lng = locationManager.location?.coordinate.longitude
+            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 15)
+            cameraUpdate.animation = .easeIn
+            cameraUpdate.animationDuration = 1
             
-            let infoWindow = NMFInfoWindow()
-            let dataSource = NMFInfoWindowDefaultTextSource.data()
-            dataSource.title = "서울특별시청"
-            infoWindow.dataSource = dataSource
-            infoWindow.open(with: marker)
+            let locationOverlay = view.mapView.locationOverlay
+            locationOverlay.location = NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0)
+            locationOverlay.hidden = false
+            
+            locationOverlay.icon = NMFOverlayImage(name: "location_overlay_icon")
+            locationOverlay.iconWidth = CGFloat(NMF_LOCATION_OVERLAY_SIZE_AUTO)
+            locationOverlay.iconHeight = CGFloat(NMF_LOCATION_OVERLAY_SIZE_AUTO)
+            locationOverlay.anchor = CGPoint(x: 0.5, y: 1)
+            
+            view.mapView.moveCamera(cameraUpdate)
         }
     }
+    func getNaverMapView() -> NMFNaverMapView {
+        view
+    }
+        
+    // 마커 부분의 lat lng를 init 부분에 호출해서 사용하면 바로 사용가능하지만
+    // 파이어베이스 연동의 문제를 생각해서 받아오도록 만들었습니다.
+
+    func setMarker(lat : Double, lng:Double, title: String) {
+        let marker = NMFMarker()
+        marker.iconImage = NMF_MARKER_IMAGE_PINK
+        marker.position = NMGLatLng(lat: lat, lng: lng)
+        marker.mapView = view.mapView
+        
+        let infoWindow = NMFInfoWindow()
+        let dataSource = NMFInfoWindowDefaultTextSource.data()
+        dataSource.title = title
+        infoWindow.dataSource = dataSource
+        infoWindow.open(with: marker)
+    }
+}
 
 #Preview {
     Coordinator() as! any View
