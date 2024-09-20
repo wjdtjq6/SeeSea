@@ -76,7 +76,7 @@ class Coordinator: NSObject, ObservableObject,
             case .denied:
                 print("위치 정보 접근을 거절했습니다. 설정에 가서 변경하세요.")
             case .authorizedAlways, .authorizedWhenInUse:
-                print("Success")
+                print("위치 정보 Success")
                 
                 coord = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))
                 userLocation = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))

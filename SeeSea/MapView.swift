@@ -24,6 +24,7 @@ struct MapView: View {
             }
             .onAppear {
                 moveToCurrentLocation()
+                viewModel.fetchBeachData()
             }
             .overlay {
                 Button {
@@ -51,7 +52,7 @@ struct MapView: View {
     }
     func annotation(beach: Beach) -> some MapContent {
         Annotation(beach.name, coordinate: beach.coordinate) {
-            Text("  \(viewModel.beachData[beach.name]?.wave)  ")
+            Text("  \(viewModel.beachData[beach.name] ?? "N/A")  ")
                 .bold()
                 .foregroundColor(.white)
                 .padding(5)

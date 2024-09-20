@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BFD570D02C9C09EE00D57ABC /* BeachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */; };
+		BFD570D22C9D65E200D57ABC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D12C9D65E200D57ABC /* NetworkManager.swift */; };
 		BFED108E2C9426A700A9DFBF /* SeeSeaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED108D2C9426A700A9DFBF /* SeeSeaApp.swift */; };
 		BFED10902C9426A700A9DFBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED108F2C9426A700A9DFBF /* ContentView.swift */; };
 		BFED10922C9426A800A9DFBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFED10912C9426A800A9DFBF /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachViewModel.swift; sourceTree = "<group>"; };
+		BFD570D12C9D65E200D57ABC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BFED108A2C9426A700A9DFBF /* SeeSea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeSea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFED108D2C9426A700A9DFBF /* SeeSeaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeSeaApp.swift; sourceTree = "<group>"; };
 		BFED108F2C9426A700A9DFBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */,
 				BFED10B02C9AADF500A9DFBF /* Locations.swift */,
 				BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */,
+				BFD570D12C9D65E200D57ABC /* NetworkManager.swift */,
 			);
 			path = SeeSea;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			files = (
 				BFED10902C9426A700A9DFBF /* ContentView.swift in Sources */,
 				BFD570D02C9C09EE00D57ABC /* BeachViewModel.swift in Sources */,
+				BFD570D22C9D65E200D57ABC /* NetworkManager.swift in Sources */,
 				BFED10AA2C98232A00A9DFBF /* MapView.swift in Sources */,
 				BFED108E2C9426A700A9DFBF /* SeeSeaApp.swift in Sources */,
 				BFED109E2C9726A500A9DFBF /* WaveForecastView.swift in Sources */,
