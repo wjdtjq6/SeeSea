@@ -52,7 +52,7 @@ struct MapView: View {
     }
     func annotation(beach: Beach) -> some MapContent {
         Annotation(beach.name, coordinate: beach.coordinate) {
-            Text("  \(viewModel.beachData[beach.name] ?? "N/A")  ")
+            Text("  \(beach.wh)  ")
                 .bold()
                 .foregroundColor(.white)
                 .padding(5)

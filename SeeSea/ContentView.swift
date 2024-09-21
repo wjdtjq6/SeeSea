@@ -38,9 +38,9 @@ struct ContentView: View {
                 Text("지도")
                 Image(systemName: "map")
             }
-            .onAppear {
-                Coordinator.shared.checkIfLocationServiceIsEnabled()
-            }
+//            .onAppear {
+//                Coordinator.shared.checkIfLocationServiceIsEnabled()
+//            }
         }
     }
 }
