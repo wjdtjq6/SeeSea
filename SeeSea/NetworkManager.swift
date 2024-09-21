@@ -35,7 +35,6 @@ class NetworkManager {
         
         let baseURL = "https://apis.data.go.kr/1360000/BeachInfoservice/getWhBuoyBeach?serviceKey=\(APIKey.serviceKey)&dataType=JSON&beach_num=\(beachNum)&searchTime=\(currentTime)"
         
-        
         //let queryItems = [
             //URLQueryItem(name: "serviceKey", value: APIKey.serviceKey),// serviceKey가 이미 인코딩되어 있으므로, 디코딩 후 다시 인코딩
 //            URLQueryItem(name: "dataType", value: "JSON"),

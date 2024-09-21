@@ -13,17 +13,15 @@ struct ContentView: View {
         TabView(selection: $selectedIndex) {
             NavigationStack {
                 WaveForecastView()
-                    .navigationTitle("예보")
             }
             .tabItem {
-                Text("파도 얘보")
+                Text("파도 예보")
                 Image(systemName: "water.waves")
             }
             .tag(0)
             
             NavigationStack {
                 WebCamView()
-                    .navigationTitle("웹캠")
             }
             .tabItem {
                 Text("웹캠")
