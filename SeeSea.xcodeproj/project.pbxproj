@@ -58,6 +58,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BFD570D52C9F059300D57ABC /* WebCam */ = {
+			isa = PBXGroup;
+			children = (
+				BFED109B2C97265500A9DFBF /* WebCamView.swift */,
+				BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */,
+			);
+			path = WebCam;
+			sourceTree = "<group>";
+		};
+		BFD570D62C9F05B400D57ABC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BFED10B02C9AADF500A9DFBF /* Locations.swift */,
+				BFED10A92C98232A00A9DFBF /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		BFED10812C9426A700A9DFBF = {
 			isa = PBXGroup;
 			children = (
@@ -77,23 +95,21 @@
 		BFED108C2C9426A700A9DFBF /* SeeSea */ = {
 			isa = PBXGroup;
 			children = (
+				BFD570D62C9F05B400D57ABC /* Map */,
+				BFD570D52C9F059300D57ABC /* WebCam */,
 				BFED10A82C9810FE00A9DFBF /* Info.plist */,
 				BFED108D2C9426A700A9DFBF /* SeeSeaApp.swift */,
 				BFED108F2C9426A700A9DFBF /* ContentView.swift */,
 				BFED10912C9426A800A9DFBF /* Assets.xcassets */,
 				BFED10932C9426A800A9DFBF /* Preview Content */,
-				BFED109B2C97265500A9DFBF /* WebCamView.swift */,
 				BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */,
 				BFED10A12C9808DA00A9DFBF /* .gitignore */,
 				BFED10A32C9808F400A9DFBF /* APIKey.swift */,
-				BFED10A92C98232A00A9DFBF /* MapView.swift */,
 				BFED10AB2C98240700A9DFBF /* Coordinator.swift */,
 				BFED10AD2C99979C00A9DFBF /* Config.xcconfig */,
 				BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */,
-				BFED10B02C9AADF500A9DFBF /* Locations.swift */,
 				BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */,
 				BFD570D12C9D65E200D57ABC /* NetworkManager.swift */,
-				BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */,
 			);
 			path = SeeSea;
 			sourceTree = "<group>";
