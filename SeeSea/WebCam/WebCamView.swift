@@ -55,7 +55,7 @@ struct BeachGridItem: View {
                 .navigationTitle(beach.name)
         } label: {
             ZStack(alignment: .bottomLeading) {
-                Image("surf-4")
+                Image(beach.name)
                     .resizable()
                     .frame(width: size ,height: size)
                     .aspectRatio(contentMode: .fill)
