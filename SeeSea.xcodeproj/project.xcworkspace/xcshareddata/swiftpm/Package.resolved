@@ -1,13 +1,22 @@
 {
-  "originHash" : "b0b2c637aa363157c57fbcb63c4de04e62d204930f564e10a5f9192184a248c9",
+  "originHash" : "182db11c87d1734fe53a6366b674339f70901a93290bd85def29b63e25e34c43",
   "pins" : [
     {
-      "identity" : "navermapsdkforspm",
+      "identity" : "realm-core",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/J0onYEong/NaverMapSDKForSPM.git",
+      "location" : "https://github.com/realm/realm-core.git",
       "state" : {
-        "revision" : "d644944b2ba8fdef2f0b51cdf1c136ae63012907",
-        "version" : "1.0.0"
+        "revision" : "e474a8d2270a8b12ac63ac9504e4757e39814b99",
+        "version" : "14.13.0"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "02860d17d793e0d4f9c08ed937002d80e09fdffd"
       }
     }
   ],

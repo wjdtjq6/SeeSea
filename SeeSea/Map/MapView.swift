@@ -16,8 +16,7 @@ struct MapView: View {
     
     var body: some View {
             Map(position: $cameraPosition) {
-                ForEach(viewModel.beaches, id: \.name) {
-                    beach in
+                ForEach(viewModel.beaches, id: \.name) { beach in
                     annotation(beach: beach)
                 }
                 UserAnnotation()
@@ -58,6 +57,9 @@ struct MapView: View {
                 .padding(5)
                 .background(.blue)
                 .clipShape(.rect(cornerRadius: 30))
+                .onTapGesture {
+                    print("탭했다.")
+                }
         }
     }
     func moveToCurrentLocation() {

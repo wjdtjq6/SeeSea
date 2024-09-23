@@ -10,6 +10,8 @@
 		BFD570D02C9C09EE00D57ABC /* BeachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */; };
 		BFD570D22C9D65E200D57ABC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D12C9D65E200D57ABC /* NetworkManager.swift */; };
 		BFD570D42C9E591800D57ABC /* CustomWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */; };
+		BFD570D92CA162A700D57ABC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BFD570D82CA162A700D57ABC /* RealmSwift */; };
+		BFD570DA2CA16F7300D57ABC /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = BFD570D82CA162A700D57ABC /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		BFED108E2C9426A700A9DFBF /* SeeSeaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED108D2C9426A700A9DFBF /* SeeSeaApp.swift */; };
 		BFED10902C9426A700A9DFBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED108F2C9426A700A9DFBF /* ContentView.swift */; };
 		BFED10922C9426A800A9DFBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFED10912C9426A800A9DFBF /* Assets.xcassets */; };
@@ -18,12 +20,24 @@
 		BFED109E2C9726A500A9DFBF /* WaveForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */; };
 		BFED10A22C9808DA00A9DFBF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BFED10A12C9808DA00A9DFBF /* .gitignore */; };
 		BFED10A42C9808F400A9DFBF /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10A32C9808F400A9DFBF /* APIKey.swift */; };
-		BFED10A72C980C2F00A9DFBF /* Junios.NMapSDKForSPM in Frameworks */ = {isa = PBXBuildFile; productRef = BFED10A62C980C2F00A9DFBF /* Junios.NMapSDKForSPM */; };
 		BFED10AA2C98232A00A9DFBF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10A92C98232A00A9DFBF /* MapView.swift */; };
-		BFED10AC2C98240800A9DFBF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10AB2C98240700A9DFBF /* Coordinator.swift */; };
 		BFED10AF2C9A9E6D00A9DFBF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */; };
 		BFED10B12C9AADF500A9DFBF /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED10B02C9AADF500A9DFBF /* Locations.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BFD570DB2CA16F7300D57ABC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BFD570DA2CA16F7300D57ABC /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachViewModel.swift; sourceTree = "<group>"; };
@@ -40,7 +54,6 @@
 		BFED10A32C9808F400A9DFBF /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		BFED10A82C9810FE00A9DFBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BFED10A92C98232A00A9DFBF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		BFED10AB2C98240700A9DFBF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BFED10AD2C99979C00A9DFBF /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BFED10B02C9AADF500A9DFBF /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
@@ -51,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFED10A72C980C2F00A9DFBF /* Junios.NMapSDKForSPM in Frameworks */,
+				BFD570D92CA162A700D57ABC /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +118,6 @@
 				BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */,
 				BFED10A12C9808DA00A9DFBF /* .gitignore */,
 				BFED10A32C9808F400A9DFBF /* APIKey.swift */,
-				BFED10AB2C98240700A9DFBF /* Coordinator.swift */,
 				BFED10AD2C99979C00A9DFBF /* Config.xcconfig */,
 				BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */,
 				BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */,
@@ -132,6 +144,7 @@
 				BFED10862C9426A700A9DFBF /* Sources */,
 				BFED10872C9426A700A9DFBF /* Frameworks */,
 				BFED10882C9426A700A9DFBF /* Resources */,
+				BFD570DB2CA16F7300D57ABC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,7 +152,7 @@
 			);
 			name = SeeSea;
 			packageProductDependencies = (
-				BFED10A62C980C2F00A9DFBF /* Junios.NMapSDKForSPM */,
+				BFD570D82CA162A700D57ABC /* RealmSwift */,
 			);
 			productName = SeeSea;
 			productReference = BFED108A2C9426A700A9DFBF /* SeeSea.app */;
@@ -170,7 +183,7 @@
 			);
 			mainGroup = BFED10812C9426A700A9DFBF;
 			packageReferences = (
-				BFED10A52C980C2F00A9DFBF /* XCRemoteSwiftPackageReference "NaverMapSDKForSPM" */,
+				BFD570D72CA162A700D57ABC /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = BFED108B2C9426A700A9DFBF /* Products */;
 			projectDirPath = "";
@@ -209,7 +222,6 @@
 				BFED109C2C97265500A9DFBF /* WebCamView.swift in Sources */,
 				BFED10A42C9808F400A9DFBF /* APIKey.swift in Sources */,
 				BFED10B12C9AADF500A9DFBF /* Locations.swift in Sources */,
-				BFED10AC2C98240800A9DFBF /* Coordinator.swift in Sources */,
 				BFD570D42C9E591800D57ABC /* CustomWKWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -326,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -428,21 +440,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BFED10A52C980C2F00A9DFBF /* XCRemoteSwiftPackageReference "NaverMapSDKForSPM" */ = {
+		BFD570D72CA162A700D57ABC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/J0onYEong/NaverMapSDKForSPM.git";
+			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				kind = exactVersion;
-				version = 1.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BFED10A62C980C2F00A9DFBF /* Junios.NMapSDKForSPM */ = {
+		BFD570D82CA162A700D57ABC /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BFED10A52C980C2F00A9DFBF /* XCRemoteSwiftPackageReference "NaverMapSDKForSPM" */;
-			productName = Junios.NMapSDKForSPM;
+			package = BFD570D72CA162A700D57ABC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

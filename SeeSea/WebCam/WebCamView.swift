@@ -17,12 +17,13 @@ struct WebCamView: View {
     @State private var selectedCategory = "양양"
    
     let categories = [
-       Category(name: "관심지역"),
-       Category(name: "제주"),
-       Category(name: "부산"),
-       Category(name: "강릉"),
-       Category(name: "울산"),
-       Category(name: "서해")
+        Category(name: "전체"),
+        Category(name: "관심지역"),
+        Category(name: "제주"),
+        Category(name: "부산"),
+        Category(name: "강릉"),
+        Category(name: "울산"),
+        Category(name: "서해")
     ]
    
     let columns = [
@@ -32,23 +33,27 @@ struct WebCamView: View {
     ]
     var body: some View {
         VStack(spacing: 0) {
-            CategoryBar(categories: categories, selectedCategory: $selectedCategory)
+            CategoryBar(categories: categories, selectedCategory: $viewModel.selectedCategory)
                 
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 3) {
-                    ForEach(viewModel.beaches, id: \.name) { beach in
-                        BeachGridItem(beach: beach)
+                    ForEach(viewModel.filteredBeaches, id: \.name) { beach in
+                        BeachGridItem(viewModel: viewModel, beach: beach)
                     }
                 }
-                //.padding()
             }
+        }
+        .onChange(of: viewModel.selectedCategory) { _ in
+            viewModel.objectWillChange.send()
         }
     }
     
 }
 struct BeachGridItem: View {
+    @ObservedObject var viewModel: BeachViewModel
     let beach: Beach
-    let size = UIScreen.main.bounds.width/3-2
+    let size = UIScreen.main.bounds.width
+    
     var body: some View {
         NavigationLink {
             CustomWKWebView(url: beach.url)
@@ -57,21 +62,34 @@ struct BeachGridItem: View {
             ZStack(alignment: .bottomLeading) {
                 Image(beach.name)
                     .resizable()
-                    .frame(width: size ,height: size)
+                    .frame(width: size/3-2 ,height: size/3-2)
                     .aspectRatio(contentMode: .fill)
                 
+                Color.black.opacity(0.3)
+                
                 VStack(alignment: .leading) {
-                    Text("양양") // 실제로는 해변의 지역을 표시해야 합니다
+                    Text(beach.category)
                         .font(.caption)
+                        .fontWeight(.medium)
                         .foregroundColor(.white)
                     Text(beach.name)
                         .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                 }
-                .padding(5)
+                .padding(10)
+                
+                Button(action: {
+                    viewModel.toggleFavorite(for: beach)
+                }, label: {
+                    Image(systemName: viewModel.isFavorite(beach) ? "heart.fill" : "heart")
+                    .resizable()
+                    .foregroundColor(.white)
+                     .frame(width: 20, height: 20)
+                })
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                .padding(10)
             }
-            .background(Color.black.opacity(0.5))
         }
     }
 }
@@ -85,7 +103,6 @@ struct CategoryBar: View {
                 ForEach(categories) { category in
                     Button(action: {
                         selectedCategory = category.name
-                        print(category)
                     }) {
                         Text(category.name)
                             .foregroundColor(selectedCategory == category.name ? .blue : .gray)

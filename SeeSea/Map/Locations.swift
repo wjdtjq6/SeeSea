@@ -8,13 +8,13 @@ import CoreLocation
 
 extension CLLocationCoordinate2D {
     static let woljeongri: Self = .init(
-        latitude: 33.544586,
-        longitude: 126.820488
+        latitude: 33.556213,
+        longitude: 126.795915
     )
     
     static let songjeong: Self = .init(
-        latitude: 37.780269,
-        longitude: 128.938075
+        latitude: 35.17853333,
+        longitude: 129.199725
     )
     
     static let gyeongpo: Self = .init(
