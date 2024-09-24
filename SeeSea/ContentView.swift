@@ -13,6 +13,7 @@ struct ContentView: View {
         TabView(selection: $selectedIndex) {
             NavigationStack {
                 WaveForecastView()
+                    .toolbarRole(.editor)
             }
             .tabItem {
                 Text("파도 예보")
@@ -22,12 +23,14 @@ struct ContentView: View {
             
             NavigationStack {
                 WebCamView()
+                    .navigationTitle("")
             }
             .tabItem {
                 Text("웹캠")
                 Image(systemName: "video")
             }
             .tag(1)
+            
             NavigationStack {
                 MapView()
                     .ignoresSafeArea(.all, edges: .top)

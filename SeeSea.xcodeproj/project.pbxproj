@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFB2AB512CA29AF700093217 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB502CA29AF700093217 /* MapDetailView.swift */; };
 		BFD570D02C9C09EE00D57ABC /* BeachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */; };
 		BFD570D22C9D65E200D57ABC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D12C9D65E200D57ABC /* NetworkManager.swift */; };
 		BFD570D42C9E591800D57ABC /* CustomWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BFB2AB502CA29AF700093217 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
 		BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachViewModel.swift; sourceTree = "<group>"; };
 		BFD570D12C9D65E200D57ABC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWKWebView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				BFED10B02C9AADF500A9DFBF /* Locations.swift */,
 				BFED10A92C98232A00A9DFBF /* MapView.swift */,
+				BFB2AB502CA29AF700093217 /* MapDetailView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			files = (
 				BFED10902C9426A700A9DFBF /* ContentView.swift in Sources */,
 				BFD570D02C9C09EE00D57ABC /* BeachViewModel.swift in Sources */,
+				BFB2AB512CA29AF700093217 /* MapDetailView.swift in Sources */,
 				BFD570D22C9D65E200D57ABC /* NetworkManager.swift in Sources */,
 				BFED10AA2C98232A00A9DFBF /* MapView.swift in Sources */,
 				BFED108E2C9426A700A9DFBF /* SeeSeaApp.swift in Sources */,

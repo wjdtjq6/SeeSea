@@ -18,7 +18,8 @@ class FavoriteBeach: Object {
     }
 }
 
-struct Beach {
+struct Beach: Identifiable {
+    let id = UUID()
     let name: String
     let coordinate: CLLocationCoordinate2D
     let beachNum: String

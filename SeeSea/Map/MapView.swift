@@ -13,41 +13,47 @@ struct MapView: View {
     @StateObject private var viewModel = BeachViewModel()
     @State private var cameraPosition: MapCameraPosition = .automatic
     @State private var locationManager = CLLocationManager()
+    @State private var selectedBeach: Beach?
     
     var body: some View {
+        ZStack {
             Map(position: $cameraPosition) {
-                ForEach(viewModel.beaches, id: \.name) { beach in
-                    annotation(beach: beach)
-                }
-                UserAnnotation()
-            }
-            .onAppear {
-                moveToCurrentLocation()
-                viewModel.fetchBeachData()
-            }
-            .overlay {
-                Button {
-                    withAnimation {
-                        moveToNearestBeach()
+                    ForEach(viewModel.beaches, id: \.name) { beach in
+                        annotation(beach: beach)
                     }
-                    
-                } label: {
-                    CircleButton(imageName: "location")
+                    UserAnnotation()
                 }
-                .frame(width: 20, height: 20)
-                .position(x: 40, y: UIScreen.main.bounds.height-150)
-                
-                Button {
-                    withAnimation {
-                        moveToCurrentLocation()
+                .onAppear {
+                    moveToCurrentLocation()
+                    viewModel.fetchBeachData()
+                }
+                .overlay {
+                    Button {
+                        withAnimation {
+                            moveToNearestBeach()
+                        }
+                        
+                    } label: {
+                        CircleButton(imageName: "location")
                     }
+                    .frame(width: 20, height: 20)
+                    .position(x: 40, y: UIScreen.main.bounds.height-150)
                     
-                } label: {
-                    CircleButton(imageName: "scope")
-                }
-                .frame(width: 20, height: 20)
-                .position(x: UIScreen.main.bounds.width-40, y: UIScreen.main.bounds.height-150)
+                    Button {
+                        withAnimation {
+                            moveToCurrentLocation()
+                        }
+                        
+                    } label: {
+                        CircleButton(imageName: "scope")
+                    }
+                    .frame(width: 20, height: 20)
+                    .position(x: UIScreen.main.bounds.width-40, y: UIScreen.main.bounds.height-150)
             }
+        }
+        .sheet(item: $selectedBeach) { beach in
+            MapDetailView(beach: beach)
+        }
     }
     func annotation(beach: Beach) -> some MapContent {
         Annotation(beach.name, coordinate: beach.coordinate) {
@@ -58,7 +64,8 @@ struct MapView: View {
                 .background(.blue)
                 .clipShape(.rect(cornerRadius: 30))
                 .onTapGesture {
-                    print("탭했다.")
+                    MapDetailView(beach: beach)
+                    print("왜")
                 }
         }
     }
