@@ -42,7 +42,7 @@ class NetworkManager {
 //            URLQueryItem(name: "searchTime", value: currentTime)
        // ]
         
-        var urlComps = URLComponents(string: baseURL)!
+        let urlComps = URLComponents(string: baseURL)!
         //urlComps.queryItems = queryItems
         
         guard let url = urlComps.url else {
@@ -50,7 +50,7 @@ class NetworkManager {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task: Void = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return

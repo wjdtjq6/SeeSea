@@ -7,23 +7,26 @@
 
 import SwiftUI
 import MapKit
-//import CoreLocation
+import CoreLocation
 
 struct MapView: View {
     @StateObject private var viewModel = BeachViewModel()
     @State private var cameraPosition: MapCameraPosition = .automatic
+    //@State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
     @State private var locationManager = CLLocationManager()
     @State private var selectedBeach: Beach?
     
     var body: some View {
         ZStack {
             Map(position: $cameraPosition) {
+            //Map(coordinateRegion: $mapRegion)
                     ForEach(viewModel.beaches, id: \.name) { beach in
                         annotation(beach: beach)
                     }
                     UserAnnotation()
                 }
                 .onAppear {
+                    locationManager.requestAlwaysAuthorization()
                     moveToCurrentLocation()
                     viewModel.fetchBeachData()
                 }
@@ -64,7 +67,7 @@ struct MapView: View {
                 .background(.blue)
                 .clipShape(.rect(cornerRadius: 30))
                 .onTapGesture {
-                    MapDetailView(beach: beach)
+                    self.selectedBeach = beach
                     print("왜")
                 }
         }
@@ -94,17 +97,6 @@ struct MapView: View {
         let to = CLLocation(latitude: to.latitude, longitude: to.longitude)
         return from.distance(from: to)
     }
-//    func annotation(title: String, coordinate: CLLocationCoordinate2D, wave: String) -> some MapContent{
-//        Annotation(title, coordinate: coordinate) {
-//            Text("  \(wave)  ")
-//                .bold()
-//                .foregroundColor(.white)
-//                .padding(5)
-//                .background(.blue)
-//                .clipShape(.rect(cornerRadius: 30))
-//        }
-//    }
-
 }
 struct CircleButton: View {
     let imageName: String

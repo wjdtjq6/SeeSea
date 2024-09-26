@@ -62,5 +62,7 @@ extension CLLocationCoordinate2D {
         longitude: 126.669447
     )
     
-    static let mallipo: Self = .init(latitude: 36.7880222222222, longitude: 126.143169444444)
+    static let mallipo: Self = .init(
+        latitude: 36.7880222222222,
+        longitude: 126.143169444444)
 }

@@ -43,7 +43,7 @@ struct WebCamView: View {
                 }
             }
         }
-        .onChange(of: viewModel.selectedCategory) { _ in
+        .onChange(of: viewModel.selectedCategory) { _, _ in
             viewModel.objectWillChange.send()
         }
     }

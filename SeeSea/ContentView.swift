@@ -13,7 +13,7 @@ struct ContentView: View {
         TabView(selection: $selectedIndex) {
             NavigationStack {
                 WaveForecastView()
-                    .toolbarRole(.editor)
+                    //.toolbarRole(.editor)
             }
             .tabItem {
                 Text("파도 예보")

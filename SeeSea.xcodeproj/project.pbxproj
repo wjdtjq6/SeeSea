@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BFB2AB512CA29AF700093217 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB502CA29AF700093217 /* MapDetailView.swift */; };
+		BFB2AB532CA4405800093217 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB522CA4405800093217 /* LocationManager.swift */; };
 		BFD570D02C9C09EE00D57ABC /* BeachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */; };
 		BFD570D22C9D65E200D57ABC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D12C9D65E200D57ABC /* NetworkManager.swift */; };
 		BFD570D42C9E591800D57ABC /* CustomWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		BFB2AB502CA29AF700093217 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
+		BFB2AB522CA4405800093217 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachViewModel.swift; sourceTree = "<group>"; };
 		BFD570D12C9D65E200D57ABC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWKWebView.swift; sourceTree = "<group>"; };
@@ -56,7 +58,6 @@
 		BFED10A32C9808F400A9DFBF /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		BFED10A82C9810FE00A9DFBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BFED10A92C98232A00A9DFBF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		BFED10AD2C99979C00A9DFBF /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BFED10B02C9AADF500A9DFBF /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +89,7 @@
 				BFED10B02C9AADF500A9DFBF /* Locations.swift */,
 				BFED10A92C98232A00A9DFBF /* MapView.swift */,
 				BFB2AB502CA29AF700093217 /* MapDetailView.swift */,
+				BFB2AB522CA4405800093217 /* LocationManager.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -121,7 +123,6 @@
 				BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */,
 				BFED10A12C9808DA00A9DFBF /* .gitignore */,
 				BFED10A32C9808F400A9DFBF /* APIKey.swift */,
-				BFED10AD2C99979C00A9DFBF /* Config.xcconfig */,
 				BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */,
 				BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */,
 				BFD570D12C9D65E200D57ABC /* NetworkManager.swift */,
@@ -224,6 +225,7 @@
 				BFED108E2C9426A700A9DFBF /* SeeSeaApp.swift in Sources */,
 				BFED109E2C9726A500A9DFBF /* WaveForecastView.swift in Sources */,
 				BFED109C2C97265500A9DFBF /* WebCamView.swift in Sources */,
+				BFB2AB532CA4405800093217 /* LocationManager.swift in Sources */,
 				BFED10A42C9808F400A9DFBF /* APIKey.swift in Sources */,
 				BFED10B12C9AADF500A9DFBF /* Locations.swift in Sources */,
 				BFD570D42C9E591800D57ABC /* CustomWKWebView.swift in Sources */,
@@ -364,13 +366,16 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeeSea/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"\"해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.\"";
+				INFOPLIST_KEY_CFBundleDisplayName = SeeSea;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"테스트\"";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = true;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"해당 앱은 사용자의 주변 해수욕장 정보를 사용하기 위해 권한이 필요합니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -398,13 +403,16 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeeSea/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"\"해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.\"";
+				INFOPLIST_KEY_CFBundleDisplayName = SeeSea;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"테스트\"";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = true;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"해당 앱은 플레이스 정보 및 사용자의 정보를 사용하기 위해 권한이 필요합니다.\"";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"해당 앱은 사용자의 주변 해수욕장 정보를 사용하기 위해 권한이 필요합니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
