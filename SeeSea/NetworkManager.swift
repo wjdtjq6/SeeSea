@@ -50,7 +50,7 @@ class NetworkManager {
             return
         }
         
-        let task: Void = URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return

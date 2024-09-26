@@ -26,7 +26,7 @@ struct MapView: View {
                     UserAnnotation()
                 }
                 .onAppear {
-                    locationManager.requestAlwaysAuthorization()
+                    locationManager.requestWhenInUseAuthorization()
                     moveToCurrentLocation()
                     viewModel.fetchBeachData()
                 }
@@ -68,7 +68,6 @@ struct MapView: View {
                 .clipShape(.rect(cornerRadius: 30))
                 .onTapGesture {
                     self.selectedBeach = beach
-                    print("왜")
                 }
         }
     }

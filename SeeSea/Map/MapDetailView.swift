@@ -14,10 +14,10 @@ struct MapDetailView: View {
             VStack {
                 Text("서핑 일지")
                     .font(.title)
-                Text(beach.name)
-                    .font(.headline)
-                // 여기에 추가적인 해변 정보를 표시할 수 있습니다.
+                Spacer()
+                CustomWKWebView(url: beach.url)
             }
+            .navigationTitle(beach.name)
         }
 }
 
