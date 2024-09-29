@@ -15,7 +15,7 @@ struct MapView: View {
     //@State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
     @State private var locationManager = CLLocationManager()
     @State private var selectedBeach: Beach?
-    
+
     var body: some View {
         ZStack {
             Map(position: $cameraPosition) {
@@ -54,8 +54,9 @@ struct MapView: View {
                     .position(x: UIScreen.main.bounds.width-40, y: UIScreen.main.bounds.height-150)
             }
         }
-        .sheet(item: $selectedBeach) { beach in
-            MapDetailView(beach: beach)
+        .fullScreenCover(item: $selectedBeach) { beach in
+            MapDetailView(beach: beach, viewModel: BeachViewModel())
+
         }
     }
     func annotation(beach: Beach) -> some MapContent {

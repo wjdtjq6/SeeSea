@@ -7,16 +7,6 @@
 
 import Foundation
 import CoreLocation
-import RealmSwift
-
-class FavoriteBeach: Object {
-    @Persisted(primaryKey: true) var name: String
-    
-    convenience init(name: String) {
-        self.init()
-        self.name = name
-    }
-}
 
 struct Beach: Identifiable {
     let id = UUID()
@@ -44,16 +34,19 @@ class BeachViewModel: ObservableObject {
         Beach(name: "만리포 해수욕장", coordinate: .mallipo, beachNum: "70", url: "http://220.95.232.18/camera/79_0.jpg", category: "서해")
     ]
     @Published var selectedCategory = "전체"
-    private var realm: Realm
+    //private var realm: Realm
+    private let databaseManager: DataBase
     @Published var favoriteBeachNames: Set<String> = []
-
-    init() {
-        realm = try! Realm()
+    
+    init(databaseManager: DataBase = DataBaseManager.shared) {
+        //realm = try! Realm()
+        self.databaseManager = databaseManager
         loadFavorites()
+        //print(realm.configuration.fileURL)
     }
-
+    
     private func loadFavorites() {
-        let favorites = realm.objects(FavoriteBeach.self)
+        let favorites = databaseManager.read(FavoriteBeach.self)//realm.objects(FavoriteBeach.self)
         favoriteBeachNames = Set(favorites.map({ $0.name }))
     }
     
@@ -69,14 +62,13 @@ class BeachViewModel: ObservableObject {
     
     func toggleFavorite(for beach: Beach) {
         if favoriteBeachNames.contains(beach.name) {
-            try! realm.write({
-                realm.delete(realm.objects(FavoriteBeach.self).filter("name == %@", beach.name))
-            })
+            if let favotiteToDelete = databaseManager.read(FavoriteBeach.self).filter("name == %@", beach.name).first {
+                databaseManager.delete(favotiteToDelete)
+            }
             favoriteBeachNames.remove(beach.name)
         } else {
-            try! realm.write({
-                realm.add(FavoriteBeach(name: beach.name))
-            })
+            let newFavorite = FavoriteBeach(name: beach.name)
+            databaseManager.write(newFavorite)
             favoriteBeachNames.insert(beach.name)
         }
         objectWillChange.send()
@@ -89,7 +81,7 @@ class BeachViewModel: ObservableObject {
     private var beachNumToIndex: [String: Int] {
         Dictionary(uniqueKeysWithValues: beaches.enumerated().map { ($1.beachNum, $0) })
     }
-
+    
     func fetchBeachData() {
         for beach in beaches {
             fetchDataForBeach(beach)
@@ -99,15 +91,34 @@ class BeachViewModel: ObservableObject {
         NetworkManager.shared.fetchBeachData(beachNum: beach.beachNum) { result in
             DispatchQueue.main.async {
                 switch result {
-                    case .success(let waveHeight):
-                        if let index = self.beachNumToIndex[waveHeight.beachNum] {
-                            self.beaches[index].wh = waveHeight.wh
-                        }
-                    case .failure(let error):
-                        print("Error fetching data for \(beach.name): \(error)")
+                case .success(let waveHeight):
+                    if let index = self.beachNumToIndex[waveHeight.beachNum] {
+                        self.beaches[index].wh = waveHeight.wh
+                    }
+                case .failure(let error):
+                    print("Error fetching data for \(beach.name): \(error)")
                 }
             }
         }
+    }
+    
+    //Diary
+    func saveDiaryEntry(beachName: String, date: Date, content: String) {
+        let entry = DiaryEntry(beachName: beachName, date: date, content: content)
+        databaseManager.write(entry)
+    }
+    
+    func getDiaryEntries(for beachName: String) -> [DiaryEntry] {
+        let entries = databaseManager.read(DiaryEntry.self).filter("beachName == %@", beachName)
+        return Array(entries).reversed()
+    }
+    
+    func updateDiaryEntry(_ entry: DiaryEntry, newContent: String) {
+        databaseManager.write(entry)
+    }
+    
+    func deleteDiaryEntry(_ entry: DiaryEntry) {
+        databaseManager.delete(entry)
     }
 }
 

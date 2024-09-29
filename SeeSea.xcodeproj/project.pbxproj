@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BFB2AB512CA29AF700093217 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB502CA29AF700093217 /* MapDetailView.swift */; };
+		BFB2AB552CA6A86300093217 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB542CA6A86300093217 /* DataBaseManager.swift */; };
+		BFB2AB582CA7B96F00093217 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = BFB2AB572CA7B96F00093217 /* Toast */; };
+		BFB2AB5B2CA7CB2300093217 /* WaveForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB5A2CA7CB2300093217 /* WaveForecastViewModel.swift */; };
+		BFB2AB5D2CA99F9500093217 /* WaveForecaseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB5C2CA99F9400093217 /* WaveForecaseDetailView.swift */; };
 		BFD570D02C9C09EE00D57ABC /* BeachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */; };
 		BFD570D22C9D65E200D57ABC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D12C9D65E200D57ABC /* NetworkManager.swift */; };
 		BFD570D42C9E591800D57ABC /* CustomWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */; };
@@ -42,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		BFB2AB502CA29AF700093217 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
+		BFB2AB542CA6A86300093217 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		BFB2AB5A2CA7CB2300093217 /* WaveForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveForecastViewModel.swift; sourceTree = "<group>"; };
+		BFB2AB5C2CA99F9400093217 /* WaveForecaseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveForecaseDetailView.swift; sourceTree = "<group>"; };
 		BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachViewModel.swift; sourceTree = "<group>"; };
 		BFD570D12C9D65E200D57ABC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWKWebView.swift; sourceTree = "<group>"; };
@@ -65,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFB2AB582CA7B96F00093217 /* Toast in Frameworks */,
 				BFD570D92CA162A700D57ABC /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +80,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BFB2AB592CA7CAD300093217 /* WaveForecast */ = {
+			isa = PBXGroup;
+			children = (
+				BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */,
+				BFB2AB5A2CA7CB2300093217 /* WaveForecastViewModel.swift */,
+				BFB2AB5C2CA99F9400093217 /* WaveForecaseDetailView.swift */,
+			);
+			path = WaveForecast;
+			sourceTree = "<group>";
+		};
 		BFD570D52C9F059300D57ABC /* WebCam */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +105,7 @@
 				BFED10B02C9AADF500A9DFBF /* Locations.swift */,
 				BFED10A92C98232A00A9DFBF /* MapView.swift */,
 				BFB2AB502CA29AF700093217 /* MapDetailView.swift */,
+				BFB2AB542CA6A86300093217 /* DataBaseManager.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -110,6 +129,7 @@
 		BFED108C2C9426A700A9DFBF /* SeeSea */ = {
 			isa = PBXGroup;
 			children = (
+				BFB2AB592CA7CAD300093217 /* WaveForecast */,
 				BFD570D62C9F05B400D57ABC /* Map */,
 				BFD570D52C9F059300D57ABC /* WebCam */,
 				BFED10A82C9810FE00A9DFBF /* Info.plist */,
@@ -117,7 +137,6 @@
 				BFED108F2C9426A700A9DFBF /* ContentView.swift */,
 				BFED10912C9426A800A9DFBF /* Assets.xcassets */,
 				BFED10932C9426A800A9DFBF /* Preview Content */,
-				BFED109D2C9726A500A9DFBF /* WaveForecastView.swift */,
 				BFED10A12C9808DA00A9DFBF /* .gitignore */,
 				BFED10A32C9808F400A9DFBF /* APIKey.swift */,
 				BFED10AE2C9A9E6D00A9DFBF /* Launch Screen.storyboard */,
@@ -154,6 +173,7 @@
 			name = SeeSea;
 			packageProductDependencies = (
 				BFD570D82CA162A700D57ABC /* RealmSwift */,
+				BFB2AB572CA7B96F00093217 /* Toast */,
 			);
 			productName = SeeSea;
 			productReference = BFED108A2C9426A700A9DFBF /* SeeSea.app */;
@@ -185,6 +205,7 @@
 			mainGroup = BFED10812C9426A700A9DFBF;
 			packageReferences = (
 				BFD570D72CA162A700D57ABC /* XCRemoteSwiftPackageReference "realm-swift" */,
+				BFB2AB562CA7B96F00093217 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = BFED108B2C9426A700A9DFBF /* Products */;
 			projectDirPath = "";
@@ -216,8 +237,11 @@
 			files = (
 				BFED10902C9426A700A9DFBF /* ContentView.swift in Sources */,
 				BFD570D02C9C09EE00D57ABC /* BeachViewModel.swift in Sources */,
+				BFB2AB5D2CA99F9500093217 /* WaveForecaseDetailView.swift in Sources */,
+				BFB2AB5B2CA7CB2300093217 /* WaveForecastViewModel.swift in Sources */,
 				BFB2AB512CA29AF700093217 /* MapDetailView.swift in Sources */,
 				BFD570D22C9D65E200D57ABC /* NetworkManager.swift in Sources */,
+				BFB2AB552CA6A86300093217 /* DataBaseManager.swift in Sources */,
 				BFED10AA2C98232A00A9DFBF /* MapView.swift in Sources */,
 				BFED108E2C9426A700A9DFBF /* SeeSeaApp.swift in Sources */,
 				BFED109E2C9726A500A9DFBF /* WaveForecastView.swift in Sources */,
@@ -446,6 +470,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BFB2AB562CA7B96F00093217 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 		BFD570D72CA162A700D57ABC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -457,6 +489,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BFB2AB572CA7B96F00093217 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFB2AB562CA7B96F00093217 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		BFD570D82CA162A700D57ABC /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BFD570D72CA162A700D57ABC /* XCRemoteSwiftPackageReference "realm-swift" */;
