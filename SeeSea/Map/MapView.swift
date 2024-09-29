@@ -28,7 +28,7 @@ struct MapView: View {
                 .onAppear {
                     locationManager.requestWhenInUseAuthorization()
                     moveToCurrentLocation()
-                    viewModel.fetchBeachData()
+                    viewModel.fetchWhData()
                 }
                 .overlay {
                     Button {
@@ -56,7 +56,6 @@ struct MapView: View {
         }
         .fullScreenCover(item: $selectedBeach) { beach in
             MapDetailView(beach: beach, viewModel: BeachViewModel())
-
         }
     }
     func annotation(beach: Beach) -> some MapContent {

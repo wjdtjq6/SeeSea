@@ -36,12 +36,18 @@ struct WaveForecastView: View {
         .onChange(of: viewModel.selectedCategory) { _, _ in
             viewModel.objectWillChange.send()
         }
+        .onAppear {
+            viewModel.fetchWhData()
+            viewModel.fetchWtData()
+        }
     }
 }
 
 struct BeachVStackItem: View {
     @ObservedObject var viewModel: BeachViewModel
     let beach: Beach
+    @State private var wh: String = "Loading..."
+    @State private var wt: String = "Loading..."
     let size = UIScreen.main.bounds.width
     
     var body: some View {
@@ -53,7 +59,7 @@ struct BeachVStackItem: View {
                 
                 Image(beach.name)
                     .resizable()
-                    .frame(width: size ,height: size/6)
+                    .frame(width: size ,height: size/5)
                     .aspectRatio(contentMode: .fill)
                 
                 Color.black.opacity(0.3)
@@ -74,6 +80,14 @@ struct BeachVStackItem: View {
                             .font(.title3)
                             .fontWeight(.bold)
                     }
+                    Spacer()
+                    
+                    VStack(alignment: .leading) {
+                        Text("수온 \(beach.wt)°C")
+                        Text("파고 \(beach.wh)m")
+                            .fontWeight(.bold)
+                    }
+                    .padding()
                 }
                 .foregroundColor(.white)
             }

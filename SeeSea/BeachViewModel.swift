@@ -14,6 +14,7 @@ struct Beach: Identifiable {
     let coordinate: CLLocationCoordinate2D
     let beachNum: String
     var wh = "Loading..."
+    var wt = "Loading..."
     let url: String
     let category: String
 }
@@ -82,12 +83,12 @@ class BeachViewModel: ObservableObject {
         Dictionary(uniqueKeysWithValues: beaches.enumerated().map { ($1.beachNum, $0) })
     }
     
-    func fetchBeachData() {
+    func fetchWhData() {
         for beach in beaches {
-            fetchDataForBeach(beach)
+            fetchWaveHeight(beach)
         }
     }
-    func fetchDataForBeach(_ beach: Beach) {
+    func fetchWaveHeight(_ beach: Beach) {
         NetworkManager.shared.fetchBeachData(beachNum: beach.beachNum) { result in
             DispatchQueue.main.async {
                 switch result {
@@ -96,12 +97,31 @@ class BeachViewModel: ObservableObject {
                         self.beaches[index].wh = waveHeight.wh
                     }
                 case .failure(let error):
-                    print("Error fetching data for \(beach.name): \(error)")
+                    print("Error fetchWhData for \(beach.name): \(error)")
                 }
             }
         }
     }
-    
+    //WaveForecat
+    func fetchWtData() {
+        for beach in beaches {
+            fetchWaterTemperature(beach)
+        }
+    }
+    func fetchWaterTemperature(_ beach: Beach) {
+        NetworkManager.shared.fetchWtData(beachNum: beach.beachNum) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let waterTemp):
+                    if let index = self.beachNumToIndex[waterTemp.beachNum] {
+                        self.beaches[index].wt = waterTemp.tw
+                    }
+                case .failure(let error):
+                    print("Error fetchWaterTemperature for \(beach.name): \(error)")
+                }
+            }
+        }
+    }
     //Diary
     func saveDiaryEntry(beachName: String, date: Date, content: String) {
         let entry = DiaryEntry(beachName: beachName, date: date, content: content)

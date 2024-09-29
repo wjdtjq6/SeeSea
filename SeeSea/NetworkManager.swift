@@ -7,21 +7,38 @@
 
 import Foundation
 
-struct BeachData: Decodable {
-    let response: Response
+struct WhData: Decodable {
+    let response: WhResponse
 }
-struct Response: Decodable {
-    let body: Items
+struct WhResponse: Decodable {
+    let body: WhItems
 }
-struct Items : Decodable {
-    let items: Item
+struct WhItems : Decodable {
+    let items: WhItem
 }
-struct Item: Decodable {
+struct WhItem: Decodable {
     let item: [WaveHeight]
 }
 struct WaveHeight: Decodable {
     let beachNum: String
     let wh: String
+}
+
+struct WtData: Decodable {
+    let response: WtResponse
+}
+struct WtResponse: Decodable {
+    let body: WtItems
+}
+struct WtItems : Decodable {
+    let items: WtItem
+}
+struct WtItem: Decodable {
+    let item: [WaveTemperature]
+}
+struct WaveTemperature: Decodable {
+    let beachNum: String
+    let tw: String
 }
 
 enum APIEndPoint {
@@ -110,7 +127,6 @@ class NetworkManager {
                 print("Received JSON: \(jsonString)")
             }
             
-
             do {
                 let decoder = JSONDecoder()
                 let forecastResponse = try decoder.decode(ForecastResponse.self, from: data)
@@ -121,12 +137,12 @@ class NetworkManager {
         }.resume()
     }
     
-    func fetchWaterData(beachNum: String, completion: @escaping (Result<WaveHeight, Error>) -> Void ) {
+    func fetchWhData(beachNum: String, completion: @escaping (Result<WaveHeight, Error>) -> Void ) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmm"
         let currentTime = dateFormatter.string(from: Date())
         
-        let endpoint = APIEndPoint.waterTemperature(searchTime: currentTime)
+        let endpoint = APIEndPoint.beachData(searchTime: currentTime)
         guard let request = createRequest(for: endpoint, beachNum: beachNum) else {
             completion(.failure(NetworkError.invalidURL))
             return
@@ -138,7 +154,6 @@ class NetworkManager {
                 completion(.failure(error))
                 return
             }
-            
             
             guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
                 completion(.failure(NetworkError.invalidResponse))
@@ -152,7 +167,49 @@ class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
-                let apiResponse = try decoder.decode(BeachData.self, from: data)
+                let apiResponse = try decoder.decode(WhData.self, from: data)
+                if let item = apiResponse.response.body.items.item.first {
+                    completion(.success(item))
+                } else {
+                    completion(.failure(NetworkError.NoItems))
+                }
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    func fetchWtData(beachNum: String, completion: @escaping (Result<WaveTemperature, Error>) -> Void ) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddHHmm"
+        let currentTime = dateFormatter.string(from: Date())
+        
+        let endpoint = APIEndPoint.waterTemperature(searchTime: currentTime)
+        guard let request = createRequest(for: endpoint, beachNum: beachNum) else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        print("수온 요기다",request)
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(NetworkError.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(NetworkError.noData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let apiResponse = try decoder.decode(WtData.self, from: data)
                 if let item = apiResponse.response.body.items.item.first {
                     completion(.success(item))
                 } else {
@@ -182,7 +239,6 @@ class NetworkManager {
                 return
             }
             
-            
             guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
                 completion(.failure(NetworkError.invalidResponse))
                 return
@@ -195,7 +251,7 @@ class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
-                let apiResponse = try decoder.decode(BeachData.self, from: data)
+                let apiResponse = try decoder.decode(WhData.self, from: data)
                 if let item = apiResponse.response.body.items.item.first {
                     completion(.success(item))
                 } else {
