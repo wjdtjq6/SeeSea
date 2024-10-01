@@ -52,7 +52,7 @@ struct BeachVStackItem: View {
     
     var body: some View {
         NavigationLink {
-            CustomWKWebView(url: beach.url)
+            WaveForecaseDetailView(beachNum: beach.beachNum)
                 .navigationTitle(beach.name)
         } label: {
             ZStack(alignment: .leading) {

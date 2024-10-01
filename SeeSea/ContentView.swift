@@ -23,7 +23,6 @@ struct ContentView: View {
             
             NavigationStack {
                 WebCamView()
-                    .navigationTitle("")
             }
             .tabItem {
                 Text("웹캠")

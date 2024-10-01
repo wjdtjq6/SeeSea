@@ -95,17 +95,39 @@ class NetworkManager {
     }
     
     func fetchForecastData(beachNum: String, completion: @escaping (Result<[ForecastItem], Error>) -> Void) {
+        let now = Date()
+        let calendar = Calendar.current
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
-        let currentTime = dateFormatter.string(from: Date())
+        let currentDate = dateFormatter.string(from: now)
         
-        let calendar = Calendar.current
-        let threeHoursAgo = calendar.date(byAdding: .hour, value: -3, to: Date())!
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HHmm"
-        let baseTime = timeFormatter.string(from: threeHoursAgo)
-
-        let endpoint = APIEndPoint.forecastData(date: currentTime, time: baseTime)
+        
+        let baseTimes = [0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300]
+        let apiProvisionTime = 10 // API 제공 시간은 각 base time 후 10분
+        
+        // 현재 시간에서 API 제공 시간을 뺀 시간 계산
+        let adjustedDate = calendar.date(byAdding: .minute, value: -apiProvisionTime, to: now)!
+        
+        // 가장 가까운 이전 base_time 찾기
+        var baseTime = baseTimes.last!
+        for time in baseTimes.reversed() {
+            let baseDate = calendar.date(bySettingHour: time / 100, minute: time % 100, second: 0, of: adjustedDate)!
+            if baseDate <= adjustedDate {
+                baseTime = time
+                break
+            }
+        }
+        
+        let baseTimeString = String(format: "%04d", baseTime)
+        
+        print("Current time: \(timeFormatter.string(from: now))")
+        print("Adjusted time: \(timeFormatter.string(from: adjustedDate))")
+        print("Selected base time: \(baseTimeString)")
+        
+        let endpoint = APIEndPoint.forecastData(date: currentDate, time: baseTimeString)
         guard let request = createRequest(for: endpoint, beachNum: beachNum) else {
             completion(.failure(NetworkError.invalidURL))
             return
@@ -116,15 +138,10 @@ class NetworkManager {
                 completion(.failure(error))
                 return
             }
-            print("파도예보 요기다",request)
-
+            
             guard let data = data else {
                 completion(.failure(NetworkError.noData))
                 return
-            }
-            //debuging
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("Received JSON: \(jsonString)")
             }
             
             do {
@@ -136,7 +153,6 @@ class NetworkManager {
             }
         }.resume()
     }
-    
     func fetchWhData(beachNum: String, completion: @escaping (Result<WaveHeight, Error>) -> Void ) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmm"
