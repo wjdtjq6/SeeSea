@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Toast
 
 struct MapDetailView: View {
     let beach: Beach

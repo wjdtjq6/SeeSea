@@ -100,7 +100,6 @@ class NetworkManager {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
-        let currentDate = dateFormatter.string(from: now)
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HHmm"
@@ -111,23 +110,36 @@ class NetworkManager {
         // 현재 시간에서 API 제공 시간을 뺀 시간 계산
         let adjustedDate = calendar.date(byAdding: .minute, value: -apiProvisionTime, to: now)!
         
+        // 현재 시간의 시와 분을 정수로 변환
+        let currentHourMinute = calendar.component(.hour, from: adjustedDate) * 100 + calendar.component(.minute, from: adjustedDate)
+        
         // 가장 가까운 이전 base_time 찾기
         var baseTime = baseTimes.last!
+        var baseDate = adjustedDate
+        
         for time in baseTimes.reversed() {
-            let baseDate = calendar.date(bySettingHour: time / 100, minute: time % 100, second: 0, of: adjustedDate)!
-            if baseDate <= adjustedDate {
+            if currentHourMinute >= time {
                 baseTime = time
                 break
             }
         }
         
+        // 만약 선택된 baseTime이 현재 시간보다 크다면 (자정을 넘긴 경우) 하루 전으로 설정
+        if baseTime > currentHourMinute {
+            baseDate = calendar.date(byAdding: .day, value: -1, to: baseDate)!
+        }
+        
         let baseTimeString = String(format: "%04d", baseTime)
+        let baseDateString = dateFormatter.string(from: baseDate)
         
-        print("Current time: \(timeFormatter.string(from: now))")
-        print("Adjusted time: \(timeFormatter.string(from: adjustedDate))")
+        print("Current time: \(dateFormatter.string(from: now)) \(timeFormatter.string(from: now))")
+        print("Adjusted time: \(dateFormatter.string(from: adjustedDate)) \(timeFormatter.string(from: adjustedDate))")
+        print("Current hour and minute: \(currentHourMinute)")
         print("Selected base time: \(baseTimeString)")
+        print("Selected base date: \(baseDateString)")
+
+        let endpoint = APIEndPoint.forecastData(date: baseDateString, time: baseTimeString)
         
-        let endpoint = APIEndPoint.forecastData(date: currentDate, time: baseTimeString)
         guard let request = createRequest(for: endpoint, beachNum: beachNum) else {
             completion(.failure(NetworkError.invalidURL))
             return
