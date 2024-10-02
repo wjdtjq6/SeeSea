@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		BFB2AB512CA29AF700093217 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB502CA29AF700093217 /* MapDetailView.swift */; };
 		BFB2AB552CA6A86300093217 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB542CA6A86300093217 /* DataBaseManager.swift */; };
-		BFB2AB582CA7B96F00093217 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = BFB2AB572CA7B96F00093217 /* Toast */; };
 		BFB2AB5B2CA7CB2300093217 /* WaveForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB5A2CA7CB2300093217 /* WaveForecastViewModel.swift */; };
 		BFB2AB5D2CA99F9500093217 /* WaveForecaseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2AB5C2CA99F9400093217 /* WaveForecaseDetailView.swift */; };
+		BFB2AB612CAD6B0D00093217 /* SeeSeaIcon.001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BFB2AB602CAD6B0C00093217 /* SeeSeaIcon.001.jpeg */; };
 		BFD570D02C9C09EE00D57ABC /* BeachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */; };
 		BFD570D22C9D65E200D57ABC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D12C9D65E200D57ABC /* NetworkManager.swift */; };
 		BFD570D42C9E591800D57ABC /* CustomWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */; };
@@ -49,6 +49,7 @@
 		BFB2AB542CA6A86300093217 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		BFB2AB5A2CA7CB2300093217 /* WaveForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveForecastViewModel.swift; sourceTree = "<group>"; };
 		BFB2AB5C2CA99F9400093217 /* WaveForecaseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveForecaseDetailView.swift; sourceTree = "<group>"; };
+		BFB2AB602CAD6B0C00093217 /* SeeSeaIcon.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SeeSeaIcon.001.jpeg; sourceTree = "<group>"; };
 		BFD570CF2C9C09EE00D57ABC /* BeachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachViewModel.swift; sourceTree = "<group>"; };
 		BFD570D12C9D65E200D57ABC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BFD570D32C9E591800D57ABC /* CustomWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWKWebView.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFB2AB582CA7B96F00093217 /* Toast in Frameworks */,
 				BFD570D92CA162A700D57ABC /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +128,7 @@
 		BFED108C2C9426A700A9DFBF /* SeeSea */ = {
 			isa = PBXGroup;
 			children = (
+				BFB2AB602CAD6B0C00093217 /* SeeSeaIcon.001.jpeg */,
 				BFB2AB592CA7CAD300093217 /* WaveForecast */,
 				BFD570D62C9F05B400D57ABC /* Map */,
 				BFD570D52C9F059300D57ABC /* WebCam */,
@@ -173,7 +174,6 @@
 			name = SeeSea;
 			packageProductDependencies = (
 				BFD570D82CA162A700D57ABC /* RealmSwift */,
-				BFB2AB572CA7B96F00093217 /* Toast */,
 			);
 			productName = SeeSea;
 			productReference = BFED108A2C9426A700A9DFBF /* SeeSea.app */;
@@ -223,6 +223,7 @@
 			files = (
 				BFED10952C9426A800A9DFBF /* Preview Assets.xcassets in Resources */,
 				BFED10A22C9808DA00A9DFBF /* .gitignore in Resources */,
+				BFB2AB612CAD6B0D00093217 /* SeeSeaIcon.001.jpeg in Resources */,
 				BFED10AF2C9A9E6D00A9DFBF /* Launch Screen.storyboard in Resources */,
 				BFED10922C9426A800A9DFBF /* Assets.xcassets in Resources */,
 			);
@@ -387,7 +388,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeeSea/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SeeSea;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = true;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"해당 앱은 사용자의 주변 해수욕장 정보를 사용하기 위해 권한이 필요합니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -404,9 +405,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jimmy.SeeSea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -423,7 +428,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeeSea/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SeeSea;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = true;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"해당 앱은 사용자의 주변 해수욕장 정보를 사용하기 위해 권한이 필요합니다.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -440,9 +445,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jimmy.SeeSea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -489,11 +498,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BFB2AB572CA7B96F00093217 /* Toast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BFB2AB562CA7B96F00093217 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
-			productName = Toast;
-		};
 		BFD570D82CA162A700D57ABC /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BFD570D72CA162A700D57ABC /* XCRemoteSwiftPackageReference "realm-swift" */;

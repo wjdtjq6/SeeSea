@@ -12,7 +12,6 @@ import CoreLocation
 struct MapView: View {
     @StateObject private var viewModel = BeachViewModel()
     @State private var cameraPosition: MapCameraPosition = .automatic
-    //@State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
     @State private var locationManager = CLLocationManager()
     @State private var selectedBeach: Beach?
 
@@ -27,7 +26,7 @@ struct MapView: View {
                 }
                 .onAppear {
                     locationManager.requestWhenInUseAuthorization()
-                    moveToCurrentLocation()
+                    moveToCurrentLocation(Deltas: 6)
                     viewModel.fetchWhData()
                 }
                 .overlay {
@@ -44,7 +43,7 @@ struct MapView: View {
                     
                     Button {
                         withAnimation {
-                            moveToCurrentLocation()
+                            moveToCurrentLocation(Deltas: 0.15)
                         }
                         
                     } label: {
@@ -71,9 +70,9 @@ struct MapView: View {
                 }
         }
     }
-    func moveToCurrentLocation() {
+    func moveToCurrentLocation(Deltas: Double) {
         if let location = locationManager.location {
-            let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
+            let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: Deltas, longitudeDelta: Deltas))
             cameraPosition = .region(region)
         }
     }

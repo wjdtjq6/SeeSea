@@ -33,14 +33,14 @@ struct WaveForecaseDetailView: View {
             viewModel.fetchForecastData(for: beachNum)
         })
     }
-    private var groupedForecastItems: [(String, [ForecastItem])] {
-        Dictionary(grouping: viewModel.forecastItems) { $0.fcstDate }
+    private var groupedForecastItems: [(String, [CombinedForecastItem])] {
+        Dictionary(grouping: viewModel.combinedForecastItems) { $0.fcstDate }
             .sorted { $0.key < $1.key }
     }
     
     private func formatDate(_ dateString: String) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
+        formatter.dateFormat = "yyyyMMdd"
         if let date = formatter.date(from: dateString) {
             formatter.dateFormat = "yyyy년 MM월 dd일"
             return formatter.string(from: date)
@@ -49,7 +49,7 @@ struct WaveForecaseDetailView: View {
     }
 }
 struct SectionView: View {
-    let items: [ForecastItem]
+    let items: [CombinedForecastItem]
     
     var body: some View {
         HStack {
@@ -62,7 +62,6 @@ struct SectionView: View {
             Text("파고")
         }
         .bold()
-        //                            .font(.headline)
         .padding(.horizontal, 30)
         .padding(.vertical, 10)
         .background(Color(.systemGray5))
@@ -70,32 +69,19 @@ struct SectionView: View {
         ForEach(items, id: \.fcstTime) { item in
             HStack {
                 Text(formatTime(item.fcstTime))
-//                if item.description.count == 1 {
-//                    Text("0\(item)시")
-//                } else {
-//                    Text("\(item)시")
-//                }
                 Spacer()
-//                Image(systemName: "location.north.fill")
-//                    .foregroundColor(.blue)
-//                Text("2.1m/s")
                 windInfo(uuu: item.uuu, vvv: item.vvv, wsd: item.wsd)
                 Spacer()
-//                Image(systemName: "sun.max")
-//                    .resizable()
-//                    .frame(width: 30, height: 30)
-//                if wt.description.count == 1 {
-//                    Text(" \(wt)°C")
-//                } else {
-//                    Text("\(wt)°C")
-//                }
-                weatherInfo(tmp: item.tmp)
+                weatherInfo(tmp: item.tmp, sky: item.sky, pty: item.pty)
                 Spacer()
-                Text(item.wav)
+                formatWaveHeight(item.wav)
             }
         }
         .padding(.horizontal, 30)
         .padding(.vertical, 10)
+    }
+    private func formatWaveHeight(_ wav: String) -> some View {
+        return Text(String(format: "%.1f",  Double(wav)!)+"m")
     }
     private func formatTime(_ timeString: String) -> String {
         return timeString.prefix(2) + "시"
@@ -105,17 +91,46 @@ struct SectionView: View {
         HStack {
             Image(systemName: "location.north.fill")
                 .rotationEffect(.degrees(calculateWindDirection(uuu: uuu, vvv: vvv)))
-            Text("\(wsd)m/s")
+            Text(String(format: "%.1f", Double(wsd)!)+"m/s")
         }
     }
     
-    private func weatherInfo(tmp: String) -> some View {
+    private func weatherInfo(tmp: String, sky: String, pty: String) -> some View {
         HStack {
-            Image(systemName: "thermometer")
+            weatherIcon(sky: sky, pty: pty)
             Text("\(tmp)°C")
         }
     }
-    
+    private func weatherIcon(sky: String, pty: String) -> some View {
+        let skyCode = Int(sky) ?? 0
+        let ptyCode = Int(pty) ?? 0
+        
+        switch (skyCode, ptyCode) {
+            // 맑음 (SKY: 1)
+            case (1, 0): return Image(systemName: "sun.max.fill")           // 맑음
+            case (1, 1): return Image(systemName: "sun.rain.fill")          // 맑음, 비
+            case (1, 2): return Image(systemName: "sun.rain.fill")          // 맑음, 비/눈
+            case (1, 3): return Image(systemName: "sun.snow.fill")          // 맑음, 눈
+            case (1, 4): return Image(systemName: "sun.rain.fill")          // 맑음, 소나기
+            
+            // 구름많음 (SKY: 3)
+            case (3, 0): return Image(systemName: "cloud.fill")         // 구름많음
+            case (3, 1): return Image(systemName: "cloud.sun.rain.fill")    // 구름많음, 비
+            case (3, 2): return Image(systemName: "cloud.sun.rain.fill")    // 구름많음, 비/눈
+            case (3, 3): return Image(systemName: "cloud.snow.fill")    // 구름많음, 눈 11
+            case (3, 4): return Image(systemName: "cloud.drizzle.fill")    // 구름많음, 소나기 00
+            
+            // 흐림 (SKY: 4)
+            case (4, 0): return Image(systemName: "smoke.fill")             // 흐림
+            case (4, 1): return Image(systemName: "cloud.rain.fill")        // 흐림, 비
+            case (4, 2): return Image(systemName: "cloud.rain.fill")       // 흐림, 비/눈
+            case (4, 3): return Image(systemName: "cloud.snow.fill")        // 흐림, 눈 11
+            case (4, 4): return Image(systemName: "cloud.drizzle.fill")   // 흐림, 소나기 00
+            
+            // 기본값 (예상치 못한 코드 조합)
+            default: return Image(systemName: "questionmark.circle.fill")   // 알 수 없는 날씨
+            }
+    }
     private func calculateWindDirection(uuu: String, vvv: String) -> Double {
         guard let u = Double(uuu), let v = Double(vvv) else { return 0 }
         let radius = atan2(u, v)
