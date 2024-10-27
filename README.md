@@ -96,7 +96,7 @@ func fetchBeachData() async throws -> BeachData {
 - 다수의 웹캠 스트림 동시 로드 시 메모리 사용량 급증
 - WKWebView 재사용 시 발생하는 리소스 누수
 #### 해결
-```
+```swift
 final class WebViewManager {
     private var webViewPool: [String: WeakWebView] = [:]
     
@@ -124,7 +124,7 @@ final class WebViewManager {
 - Realm 객체 업데이트 시 SwiftUI View 갱신 누락
 - 백그라운드 스레드에서 UI 업데이트 시도로 인한 크래시
 #### 해결
-```
+```swift
 class BeachViewModel: ObservableObject {
     private var notificationTokens: [NotificationToken] = []
     
@@ -144,7 +144,7 @@ class BeachViewModel: ObservableObject {
 ## 📝 회고
 ### Keep (유지할 점)
 #### 1. 모듈화된 아키텍처 설계
-```
+```swift
 protocol DataBase {
     func read<T: Object>(_ object: T.Type) -> Results<T>
     func write<T: Object>(_ object: T)
@@ -160,7 +160,7 @@ protocol NetworkService {
 
 ### Problem (개선할 점)
 #### 1. 테스트 코드 부재
-```
+```swift
 // 테스트를 고려한 의존성 주입 필요
 class BeachViewModel {
     private let networkService: NetworkService
@@ -179,7 +179,7 @@ class BeachViewModel {
 - Mock 객체를 활용한 테스트 시나리오 부재
 
 #### 2. 에러 처리 체계 미흡
-```
+```swift
 // 체계적인 에러 타입 정의 필요
 enum AppError: Error {
     case network(NetworkError)
