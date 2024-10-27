@@ -1,5 +1,5 @@
 # 🌊 SeeSea (씨씨)
-> ### 서핑러를 위한 실시간 파도 예보 & 웹캠 앱
+> ### 서퍼를 위한 실시간 파도 예보 & 웹캠 앱
 
 <a href="https://apps.apple.com/kr/app/seesea/id6711330853" target="_blank">
   <img width="130" alt="appstore" src="https://user-images.githubusercontent.com/55099365/196023806-5eb7be0f-c7cf-4661-bb39-35a15146c33a.png">
