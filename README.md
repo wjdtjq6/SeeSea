@@ -76,7 +76,7 @@
 - 파고/수온/예보 데이터를 각각 별도 API로 호출하여 발생하는 **성능 이슈**로 인해 비동기 데이터의 상태 관리와 UI 업데이트 시 Race Condition 발생
 
 #### 해결
-```
+```swift
 // Swift Concurrency의 TaskGroup을 활용한 동시성 제어
 func fetchBeachData() async throws -> BeachData {
     try await withThrowingTaskGroup(of: APIResponse.self) { group in
