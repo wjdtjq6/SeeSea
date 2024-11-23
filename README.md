@@ -72,10 +72,10 @@
 
 ## 🔧 시행착오
 ### 1. 멀티 엔드포인트 데이터 동기화 최적화
-#### 문제
+#### 문제상황
 - 파고/수온/예보 데이터를 각각 별도 API로 호출하여 발생하는 **성능 이슈**로 인해 비동기 데이터의 상태 관리와 UI 업데이트 시 Race Condition 발생
 
-#### 해결
+#### 해결 방안
 ```swift
 // Swift Concurrency의 TaskGroup을 활용한 동시성 제어
 func fetchBeachData() async throws -> BeachData {
@@ -92,10 +92,10 @@ func fetchBeachData() async throws -> BeachData {
 ```
     
 ### 2. WKWebView 메모리 누수 및 성능 최적화
-#### 문제
+#### 문제상황
 - 다수의 웹캠 스트림 동시 로드 시 메모리 사용량 급증
 - WKWebView 재사용 시 발생하는 리소스 누수
-#### 해결
+#### 해결 방안
 ```swift
 final class WebViewManager {
     private var webViewPool: [String: WeakWebView] = [:]
@@ -120,10 +120,10 @@ final class WebViewManager {
 ```
 
 ### 3. Realm 데이터 동기화
-#### 문제
+#### 문제상황
 - Realm 객체 업데이트 시 SwiftUI View 갱신 누락
 - 백그라운드 스레드에서 UI 업데이트 시도로 인한 크래시
-#### 해결
+#### 해결 방안
 ```swift
 class BeachViewModel: ObservableObject {
     private var notificationTokens: [NotificationToken] = []
