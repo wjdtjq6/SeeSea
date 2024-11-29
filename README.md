@@ -56,6 +56,7 @@
 - WKWebView와 YouTubePlayerKit을 활용한 이미지/비디오/유튜브 스트리밍 구현
 - URL 패턴 매칭을 통한 자동 포맷 감지 및 적절한 뷰 컴포넌트 전환
 - 주기적 데이터 리프레시와 애니메이션 처리로 끊김없는 실시간 영상 제공
+- 다크모드 대응을 위한 동적 JavaScript 인젝션
 
 ### MapKit 기반 위치 트래킹 서비스
 - CoreLocation과 MapKit 프레임워크를 활용한 실시간 위치 트래킹
